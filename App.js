@@ -8,6 +8,7 @@
 
 import React from 'react';
 import {  StyleSheet, StatusBar } from 'react-native';
+import Onboarding from './src/Screens/Onboarding';
 import Splash from './src/Screens/Splash';
 import Welcome from './src/Screens/Welcome';
 
@@ -16,7 +17,8 @@ const App = () => {
     <>
       <StatusBar barStyle="dark-content" />
       {/* <Splash /> */}
-      <Welcome />
+      {/* <Welcome /> */}
+      <Onboarding />
     </>
   );
 };
