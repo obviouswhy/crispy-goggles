@@ -1,7 +1,9 @@
 # crispy-goggles
 > Implementing UI using React Native.
-
+\
+\
 Implementing the UI of this project from UpLabs.com
+\
 [Coupons & Discounts App](https://www.uplabs.com/posts/coupons-discounts-app-freebie-day-306-365)
 by [Kishore](https://www.uplabs.com/elitepixels)
 
@@ -16,6 +18,7 @@ by [Kishore](https://www.uplabs.com/elitepixels)
 
     1. Run `pod install` from `discountApp/ios` folder
     3. Start XCode and open generated `discountApp.xcworkspace`
+    \
     \
     Note:
     In case of running it an iPhone Device:
