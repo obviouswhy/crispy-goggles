@@ -6,7 +6,7 @@ import SocialButton from '../../Components/SocialButton'
 const Onboarding = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
-      <Image source={require('../../Assets/Images/onboarding-img.png')} style={styles.welcomeImage} resizeMode={'contain'} />
+      <Image source={require('../../Assets/Images/onboarding-img.png')} style={styles.onboardingImage} resizeMode={'cover'} />
       <View style={styles.textWrapper}>
         <Text style={styles.title} >Welcome Abroad!</Text>
         <Text style={styles.subtitle} >Signup to get started with the app. Login if you already have an account.</Text>
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center'
   },
-  welcomeImage: {
+  onboardingImage: {
     width: '100%',
     height: '30%'
   },
