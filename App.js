@@ -6,21 +6,21 @@
  * @flow strict-local
  */
 
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import {  StyleSheet, StatusBar } from 'react-native';
-import Login from './src/Screens/Login';
-import Onboarding from './src/Screens/Onboarding';
-import Splash from './src/Screens/Splash';
-import Welcome from './src/Screens/Welcome';
+import { StatusBar } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import WelcomeStack from './src/Navigation/WelcomeStack';
 
 const App = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      {/* <Splash /> */}
-      {/* <Welcome /> */}
-      {/* <Onboarding /> */}
-      <Login />
+      <NavigationContainer>
+        <SafeAreaProvider>
+          <WelcomeStack />
+        </SafeAreaProvider>
+      </NavigationContainer>
     </>
   );
 };

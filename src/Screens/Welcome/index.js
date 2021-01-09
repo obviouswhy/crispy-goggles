@@ -1,17 +1,21 @@
 import React from 'react'
 import { View, Text, SafeAreaView, StyleSheet, Image, TouchableOpacity} from 'react-native'
 import Button from '../../Components/Button'
+import { useNavigation } from '@react-navigation/native';
 
 const Welcome = () => {
+  const navigation = useNavigation();
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <Image source={require('../../Assets/Images/welcome-img.png')} style={styles.welcomeImage} resizeMode={'contain'} />
-      <View style={styles.textWrapper}>
-        <Text style={styles.title} >Cheers to Discounts!</Text>
-        <Text style={styles.subtitle} >Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at.</Text>
-      </View>
-      <Button title={'Get Started'} />
-    </SafeAreaView>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
+      <SafeAreaView style={styles.safeArea}>
+        <Image source={require('../../Assets/Images/welcome-img.png')} style={styles.welcomeImage} resizeMode={'contain'} />
+        <View style={styles.textWrapper}>
+          <Text style={styles.title} >Cheers to Discounts!</Text>
+          <Text style={styles.subtitle} >Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at.</Text>
+        </View>
+        <Button onClick={() => navigation.navigate('Onboarding')} title={'Get Started'} />
+      </SafeAreaView>
+    </View>
   )
 }
 

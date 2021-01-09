@@ -2,24 +2,28 @@ import React, { useEffect } from 'react'
 import { View, Text, SafeAreaView, StyleSheet, Image } from 'react-native'
 import Button from '../../Components/Button'
 import SocialButton from '../../Components/SocialButton'
+import { useNavigation } from '@react-navigation/native';
 
 const Onboarding = () => {
+  const navigation = useNavigation();
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <Image source={require('../../Assets/Images/onboarding-img.png')} style={styles.onboardingImage} resizeMode={'cover'} />
-      <View style={styles.textWrapper}>
-        <Text style={styles.title} >Welcome Abroad!</Text>
-        <Text style={styles.subtitle} >Signup to get started with the app. Login if you already have an account.</Text>
-      </View>
-      <View style={{width: '100%', height: '30%', alignItems: 'center', justifyContent: 'space-evenly'}}>
-        <View style={{flexDirection: 'row', width: '90%', justifyContent: 'space-between'}}>
-          <SocialButton type={'fb'} size={'md'} title={'f'} />
-          <SocialButton type={'gl'} size={'md'} title={'G'} />
+    <View style={{flex: 1, backgroundColor: 'white'}}>
+      <SafeAreaView style={styles.safeArea}>
+        <Image source={require('../../Assets/Images/onboarding-img.png')} style={styles.onboardingImage} resizeMode={'cover'} />
+        <View style={styles.textWrapper}>
+          <Text style={styles.title} >Welcome Abroad!</Text>
+          <Text style={styles.subtitle} >Signup to get started with the app. Login if you already have an account.</Text>
         </View>
-        <Button title={'Sign Up with E-mail'} />
-        <Button primary={false} title={'Login to my Account'} />
-      </View>
-    </SafeAreaView>
+        <View style={{width: '100%', height: '30%', alignItems: 'center', justifyContent: 'space-evenly'}}>
+          <View style={{flexDirection: 'row', width: '90%', justifyContent: 'space-between'}}>
+            <SocialButton type={'fb'} size={'md'} title={'f'} />
+            <SocialButton type={'gl'} size={'md'} title={'G'} />
+          </View>
+          <Button title={'Sign Up with E-mail'} />
+          <Button onClick={()=> navigation.navigate('Login')} primary={false} title={'Login to my Account'} />
+        </View>
+      </SafeAreaView>
+    </View>
   )
 }
 

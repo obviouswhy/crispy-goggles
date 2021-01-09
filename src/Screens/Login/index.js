@@ -3,35 +3,41 @@ import { View, Text, SafeAreaView, StyleSheet, Image, KeyboardAvoidingView, Touc
 import Button from '../../Components/Button'
 import ArrowBack from '../../Components/ArrowBack'
 import FloatingInput from '../../Components/FloatingInput'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { useNavigation } from '@react-navigation/native'
 
 const Login = () => {
+  const insets = useSafeAreaInsets();
+  const navigation = useNavigation();
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <View style={styles.header}>
-        <TouchableOpacity style={{padding: 10}}>
-          <ArrowBack />
-        </TouchableOpacity>
-      </View>
-      <KeyboardAvoidingView behavior={'padding'} style={styles.KeyboardAvoidingView}>
-        <Image source={require('../../Assets/Images/onboarding-img.png')} style={[styles.loginImage, {position: 'absolute'}]} resizeMode={'cover'} />
-        <View style={styles.loginImage} />
-        <View style={styles.textWrapper}>
-          <Text style={styles.title} >Login</Text>
-          <Text style={styles.subtitle} >Welcome back, login to continue!</Text>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
+      <SafeAreaView style={styles.safeArea}>
+        <View style={[styles.header, {top: insets.top + 10}]}>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={{padding: 10}}>
+            <ArrowBack />
+          </TouchableOpacity>
         </View>
-        <View  style={styles.inputWrapper}>
-          <FloatingInput placeholder={'Username'} />
-          <View style={styles.separator} />
-          <FloatingInput placeholder={'Password'} />
-          <View style={styles.separator} />
-          <Text style={{alignSelf: 'flex-end'}}>forgot your Password?</Text>
+        <KeyboardAvoidingView behavior={'padding'} style={styles.KeyboardAvoidingView}>
+          <Image source={require('../../Assets/Images/onboarding-img.png')} style={[styles.loginImage, {position: 'absolute'}]} resizeMode={'cover'} />
+          <View style={styles.loginImage} />
+          <View style={styles.textWrapper}>
+            <Text style={styles.title} >Login</Text>
+            <Text style={styles.subtitle} >Welcome back, login to continue!</Text>
+          </View>
+          <View  style={styles.inputWrapper}>
+            <FloatingInput placeholder={'Username'} />
+            <View style={styles.separator} />
+            <FloatingInput placeholder={'Password'} />
+            <View style={styles.separator} />
+            <Text style={{alignSelf: 'flex-end'}}>forgot your Password?</Text>
+          </View>
+        </KeyboardAvoidingView>
+        <View style={styles.buttonWrapper}>
+          <Button title={'Login to my Account'} />
+          <Button primary={false} title={'Signup to New Account'} />
         </View>
-      </KeyboardAvoidingView>
-      <View style={styles.buttonWrapper}>
-        <Button title={'Sign Up with E-mail'} />
-        <Button primary={false} title={'Login to my Account'} />
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </View>
   )
 }
 
@@ -47,7 +53,6 @@ const styles = StyleSheet.create({
   header: {
     width: '100%',
     position: 'absolute',
-    top: 30,
     zIndex: 10,
     flexDirection:'row',
     alignItems: 'center',
