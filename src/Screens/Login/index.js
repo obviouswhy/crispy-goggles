@@ -29,6 +29,8 @@ const Login = () => {
             <View style={styles.separator} />
             <FloatingInput placeholder={'Password'} />
             <View style={styles.separator} />
+            <View style={styles.separator} />
+            <View style={styles.separator} />
             <Text style={{alignSelf: 'flex-end'}}>forgot your Password?</Text>
           </View>
         </KeyboardAvoidingView>
@@ -99,6 +101,6 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   separator: {
-    height: 10
+    height: 5
   },
 });
