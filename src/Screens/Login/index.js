@@ -35,7 +35,7 @@ const Login = () => {
           </View>
         </KeyboardAvoidingView>
         <View style={styles.buttonWrapper}>
-          <Button title={'Login to my Account'} />
+          <Button onClick={() => navigation.navigate('Home')} title={'Login to my Account'} />
           <Button primary={false} title={'Signup to New Account'} />
         </View>
       </SafeAreaView>
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     alignSelf:'center'
   },
   buttonWrapper: {
-    flex: .3,
+    flex: .5,
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center'
