@@ -1,10 +1,11 @@
 import React from 'react'
 import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import Pill from '../Pill';
+import Pill from '../Pill'
+import { SharedElement } from 'react-navigation-shared-element'
 
 const { height, width } = Dimensions.get('window')
 
-const OfferCard = ({ brand, title, subtitle_short, subtitle_long, data, ...item }) => {
+const OfferCard = ({ brand, title, subtitle_short, subtitle_long, data, onPress, ...item }) => {
 
   let logo = (() => {
     switch (brand) {
@@ -22,19 +23,23 @@ const OfferCard = ({ brand, title, subtitle_short, subtitle_long, data, ...item 
   })();
 
   return (
-    <TouchableOpacity activeOpacity={.8} style={styles.cardWrapper}>
+    <TouchableOpacity {...{onPress}} activeOpacity={.8} style={styles.cardWrapper}>
       <View style={styles.contentWrapper}>
-        <View style={styles.logoImgWrapper} >
-          <Image source={logo} style={styles.logoImg} resizeMode={'contain'} />
-        </View>
+          <SharedElement style={styles.logoImgWrapper} id={`item.${item.id}.logo`}>
+            <Image source={logo} style={styles.logoImg} resizeMode={'contain'} />
+          </SharedElement>
         <View style={styles.rightWrapper}>
-          <Text style={styles.title}>{title}</Text>
+          <SharedElement style={{}} id={`item.${item.id}.title`}>
+            <Text style={styles.title}>{title}</Text>
+          </SharedElement>
           <Text style={styles.subtitle}>{subtitle_short}</Text>
-          <View style={styles.pillsWrapper}>
-            <Pill type={'rating'} {...{data}} />
-            <Pill type={'category'} {...{data}} />
-            <Pill type={'days'} {...{data}} />
-          </View>
+          <SharedElement style={{}} id={`item.${item.id}.pills`}>
+            <View style={styles.pillsWrapper}>
+              <Pill type={'rating'} {...{data}} />
+              <Pill type={'category'} {...{data}} />
+              <Pill type={'days'} {...{data}} />
+            </View>
+          </SharedElement>
         </View>
       </View>
     </TouchableOpacity>

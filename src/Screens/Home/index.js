@@ -1,14 +1,14 @@
 import React from 'react'
 import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View, Dimensions, Image } from 'react-native'
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import FeaturedCard from '../../Components/FeaturedCard';
-import OfferCard from '../../Components/OfferCard';
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import FeaturedCard from '../../Components/FeaturedCard'
+import OfferCard from '../../Components/OfferCard'
 
 const featuredOffers = [
-  { id: 1, brand: 'mcd', productImage: 'https://i.pinimg.com/originals/2b/96/07/2b9607fcd5f236b4d5483673d0168c67.png', backgroundColor: '#d45349', offer: '20-30% OFF', exclusive: true },
-  { id: 2, brand: 'hm', productImage: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e2bf8b9a-43dd-4849-a8f3-e1b1b8cb3bc5/d87a4o5-af7ce089-08ff-4f36-aa42-4de439f2d350.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvZTJiZjhiOWEtNDNkZC00ODQ5LWE4ZjMtZTFiMWI4Y2IzYmM1XC9kODdhNG81LWFmN2NlMDg5LTA4ZmYtNGYzNi1hYTQyLTRkZTQzOWYyZDM1MC5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.IqYqVtTpmWG5JAWRrAGL176yn5SqBcFrz52vwVOxt6o', backgroundColor: '#F5E2E4', offer: '40-60% OFF', exclusive: true },
-  { id: 3, brand: 'nk', productImage: 'http://clipart-library.com/images_k/shoe-transparent-background/shoe-transparent-background-12.png', backgroundColor: '#a859a8', offer: '25% OFF', exclusive: true },
-  { id: 4, brand: 'bk', productImage: 'https://i.dlpng.com/static/png/1596227--burger-meal-png-435_285_preview.png', backgroundColor: '#FBECDB', offer: '40% OFF', exclusive: true },
+  { id: 'ft-1', brand: 'mcd', productImage: 'https://i.pinimg.com/originals/2b/96/07/2b9607fcd5f236b4d5483673d0168c67.png', backgroundColor: '#d45349', offer: '20-30% OFF', exclusive: true },
+  { id: 'ft-2', brand: 'hm', productImage: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e2bf8b9a-43dd-4849-a8f3-e1b1b8cb3bc5/d87a4o5-af7ce089-08ff-4f36-aa42-4de439f2d350.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvZTJiZjhiOWEtNDNkZC00ODQ5LWE4ZjMtZTFiMWI4Y2IzYmM1XC9kODdhNG81LWFmN2NlMDg5LTA4ZmYtNGYzNi1hYTQyLTRkZTQzOWYyZDM1MC5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.IqYqVtTpmWG5JAWRrAGL176yn5SqBcFrz52vwVOxt6o', backgroundColor: '#F5E2E4', offer: '40-60% OFF', exclusive: true },
+  { id: 'ft-3', brand: 'nk', productImage: 'http://clipart-library.com/images_k/shoe-transparent-background/shoe-transparent-background-12.png', backgroundColor: '#a859a8', offer: '25% OFF', exclusive: true },
+  { id: 'ft-4', brand: 'bk', productImage: 'https://i.dlpng.com/static/png/1596227--burger-meal-png-435_285_preview.png', backgroundColor: '#FBECDB', offer: '40% OFF', exclusive: true },
 ]
 const sections = [
   {id: 1, name: 'All Offers'},
@@ -86,14 +86,14 @@ const offers = [
 const { height, width } = Dimensions.get('window')
 
 
-const Home = () => {
+const Home = ({ navigation }) => {
   const insets = useSafeAreaInsets();
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <SafeAreaView style={styles.safeArea}>
         <View style={[styles.header, {top: insets.top + 10}]}>
           <Text style={styles.headerTitle}>Offers Galore</Text>
-          <Image source={{uri: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'}} style={styles.headerProfile} resizeMode={'contain'} />
+          <Image source={{uri: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'}} style={styles.headerProfile} resizeMode={'cover'} />
         </View>
         <View style={styles.headerSpacer} />
         <ScrollView style={{paddingVertical: 10}}>
@@ -109,7 +109,7 @@ const Home = () => {
           <View style={{width: '100%', height: 50, backgroundColor: '#44444422', marginVertical: 20}} />
           <View style={{alignItems: 'center'}}>
             <Text style={styles.recommendedTitle}>Recommended for you</Text>
-            {offers.map( item => <OfferCard key={item.id} {...item} />)}
+            {offers.map( item => <OfferCard onPress={()=> navigation.navigate('OfferDetails', { item } )} key={item.id} {...item} />)}
           </View>
           <View style={{height: 120}} />
         </ScrollView>

@@ -18,7 +18,7 @@ const hexToRgb = hex => {
   } : null;
 }
 
-const FeaturedCard = ({ backgroundColor, brand, exclusive, offer, productImage, ...item }) => {
+const FeaturedCard = ({ backgroundColor, brand, exclusive, offer, productImage, onPress, ...item }) => {
   const { r, g, b } = hexToRgb(backgroundColor)
   let logo = (() => {
     switch (brand) {
@@ -35,10 +35,10 @@ const FeaturedCard = ({ backgroundColor, brand, exclusive, offer, productImage, 
     }
   })();
   return (
-    <TouchableOpacity activeOpacity={.8} style={[styles.shadow, styles.cardWrapper, {backgroundColor: backgroundColor}]}>
+    <TouchableOpacity {...{onPress}} activeOpacity={.8} style={[styles.shadow, styles.cardWrapper, {backgroundColor: backgroundColor}]}>
       <View style={styles.contentWrapper}>
         <View style={styles.leftContent}>
-          <Image source={logo} style={[styles.logoImg, { tintColor: brand == 'nk'? colorForBackground(r,g,b) : null }]} resizeMode={'contain'} />
+            <Image source={logo} style={[styles.logoImg, { tintColor: brand == 'nk'? colorForBackground(r,g,b) : null }]} resizeMode={'contain'} />
           <Text style={[styles.title, {color: colorForBackground(r,g,b)}]}>{offer}</Text>
           <Text style={[styles.subTitle, {color: colorForBackground(r,g,b)}]}>{exclusive? 'Exclusive Offer' : ''}</Text>
         </View>
